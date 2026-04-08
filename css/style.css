@@ -1,0 +1,93 @@
+.text-white {
+  color: white !important;
+}
+
+.btn-audio-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.music-status {
+  display: flex;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  z-index: 9999;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.music-status .spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #a259f7;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- CÀI ĐẶT CHUNG & NỀN ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Giữ nguyên để tránh thanh cuộn */
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  /* Làm nền tối hơn và chuyển màu mượt hơn */
+  background: radial-gradient(circle at center, #0a0a1f 0%, #000000 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+
+
+/* ---- HIỆU ỨNG BLUR VÀ OVERLAY ---- */
+#dark-overlay {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Lớp phủ tối hơn để tạo tương phản */
+  background: rgba(0, 0, 5, 0.95);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+body.intro-started #dark-overlay {
+  opacity: 0;
+  transition-duration: 1.5s;
+}
